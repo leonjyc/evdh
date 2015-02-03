@@ -1,5 +1,5 @@
 /* evdh.js, used in node.js, main bin file for evdh : EisF Video Download Helper, sceext <sceext@foxmail.com> 2009EisF2015, 2015.01 
- * version 0.1.0.0 test201502031428 (public version) 
+ * version 0.1.1.0 test201502031614 (public zh-cn version) 
  * author sceext <sceext@foxmail.com> 2015.01 
  * copyright 2015 sceext 
  *
@@ -214,7 +214,7 @@ function test_host_task_next(_step, _host) {
 		
 		_.ol.read(function(err){
 			if (err) {
-				time_log('ERROR: read log failed ! ');
+				time_log('错误: 读取日志文件失败 ! ');
 				
 				// just start a new task
 				_next('create_new_task', _host);
@@ -256,7 +256,7 @@ function test_host_task_next(_step, _host) {
 		
 		// check found
 		if (!found[1]) {	// not found unfinished task
-			time_log('INFO: not found unfinished task ');
+			time_log('信息: 没有发现未完成的任务 ');
 			
 			_next('create_new_task', _host);
 			return;
@@ -270,19 +270,19 @@ function test_host_task_next(_step, _host) {
 		var task_i = item_l[1].json;
 		
 		console.log('');
-		time_log('INFO: found 1 unfinished task; task info: ');
+		time_log('信息: 发现 1 个未完成的任务; 任务信息如下: ');
 		
-		console.log('    host_url  : ' + task_i.host_url);
-		console.log('    base_path : ' + task_i.base_path);
-		console.log('    site      : ' + task_i.site);
-		console.log('    hd : ' + task_i.hd + ',  quality : ' + task_i.quality);
-		console.log('    title     : ' + task_i.title);
+		console.log('    视频播放页面URL    : ' + task_i.host_url);
+		console.log('    保存文件的基础位置 : ' + task_i.base_path);
+		console.log('    视频网站           : ' + task_i.site);
+		console.log('    清晰度代码 : ' + task_i.hd + ',  视频质量 : ' + task_i.quality);
+		console.log('    标题               : ' + task_i.title);
 		// count
-		console.log('\n    count ' + task_i.count.all_file + ' files, ' + _ui.get_show_file_size(task_i.count.all_byte) + ' ' + _ui.get_show_time(task_i.count.all_time_s) + ', doing ' + task_i.count.doing + ', wait ' + task_i.count.wait + ', error ' + task_i.count.error + ' ');
-		console.log('    done ' + task_i.count.done + ' files, ' + _ui.get_show_file_size(task_i.count.ed_byte) + ', ' + (_ui.make_rest_num((task_i.count.ed_byte / task_i.count.all_byte) * 1e2, 2)) + '% \n');
+		console.log('\n    总计 ' + task_i.count.all_file + ' 个文件, ' + _ui.get_show_file_size(task_i.count.all_byte) + ' ' + _ui.get_show_time(task_i.count.all_time_s) + ', 正在下载 ' + task_i.count.doing + ', 等待 ' + task_i.count.wait + ', 错误 ' + task_i.count.error + ' ');
+		console.log('    已完成 ' + task_i.count.done + ' 个文件, ' + _ui.get_show_file_size(task_i.count.ed_byte) + ', ' + (_ui.make_rest_num((task_i.count.ed_byte / task_i.count.all_byte) * 1e2, 2)) + '% \n');
 		
 		// ask user
-		_ui.ask_line('    Do you want to continue it ? (y/N) : ', function(text){
+		_ui.ask_line('    你想继续吗? (y/N) : ', function(text){
 			_host.answer = text;
 			
 			_next(_step + 1, _host);
@@ -305,7 +305,7 @@ function test_host_task_next(_step, _host) {
 		// set o_host_task log
 		_.oh.set_log(item_l[1].json);
 		
-		time_log('INFO: continue task ... ');
+		time_log('信息: 正在 继续任务 ... ');
 		// now, read log, load task, and restart done
 		_next('start_task', _host);
 		
@@ -317,7 +317,7 @@ function test_host_task_next(_step, _host) {
 		console.log('');
 		
 		// input a url
-		_ui.ask_line('    please input a URL of a video play page : ', function(text){
+		_ui.ask_line('    请输入一个 视频播放页面的 URL : ', function(text){
 			_host.input_url = _b.pure_string(text);
 			
 			_next(_step + 1, _host);
@@ -327,12 +327,12 @@ function test_host_task_next(_step, _host) {
 	case 6:	// got url
 		console.log('');
 		
-		time_log('INFO: got URL [[' + _host.input_url + ']] \n');
+		time_log('信息: 已输入 URL [[' + _host.input_url + ']] \n');
 		
 		// analyse it
 		_aurl.aurl(_host.input_url, function(err, info){
 			if (err) {
-				time_log('ERROR: analyse url failed ! ');
+				time_log('错误: 解析 URL 失败 ! ');
 				
 				_host.error = err;
 				_next(-1, _host);
@@ -351,15 +351,15 @@ function test_host_task_next(_step, _host) {
 		
 		var v_num = info.length;
 		if (v_num > 0) {
-			time_log('[ OK ] found ' + v_num + ' videos ! ');
+			time_log('[ OK ] 发现 ' + v_num + ' 个视频 ! ');
 		} else {
-			time_log('ERROR: found ' + v_num + ' video ! ');
+			time_log('错误: 发现 ' + v_num + ' 个视频 ! ');
 		}
 		
 		// auto choose quality
 		_m.select_quality(info, function(err, info){
 			if (err) {
-				time_log('ERROR: auto select video quality failed ! ');
+				time_log('错误: 自动选择视频质量失败 ! ');
 				
 				_host.error = err;
 				_next(-1, _host);
@@ -368,7 +368,7 @@ function test_host_task_next(_step, _host) {
 				
 				// check selected info
 				if (!info) {
-					time_log('ERROR: no such video: auto select video quality failed ! ');
+					time_log('错误: 没有这样的视频: 自动选择视频质量失败 ! ');
 					
 					_host.error = true;
 					_next(-1, _host);
@@ -384,17 +384,17 @@ function test_host_task_next(_step, _host) {
 	case 8:	// got selected video
 		
 		// print video info
-		time_log('INFO: auto select this video : ');
+		time_log('信息: 自动选择了这个视频: ');
 		
 		_m.show_video_info([_host.auto_info]);
 		
 		console.log('');
 		
 		// ask ok
-		_ui.ask_line('    Is this ok ? (Y/n) : ', function(text){
+		_ui.ask_line('    这可以吗? (Y/n) : ', function(text){
 			var t = _b.pure_string(text);
 			if (t != 'Y') {
-				time_log('INFO: you selected quit. ');
+				time_log('信息: 你选择了退出. ');
 				
 				_next(0, _host);
 			} else {
@@ -425,12 +425,12 @@ function test_host_task_next(_step, _host) {
 		_.oh.create(t_url, t_hd, t_quality, t_title, _host.ainfo.video);
 		
 		// print out
-		time_log('[ OK ] add 1 task, task info : ');
-		console.log('    url       : ' + t_url);
-		console.log('    hd        : ' + t_hd + ',     quality : ' + t_quality);
-		console.log('    title     : ' + t_title);
-		console.log('    base_path : ' + t_base_path);
-		console.log('    paths examples : ');
+		time_log('[ OK ] 添加 1 个任务, 任务信息如下: ');
+		console.log('    URL                : ' + t_url);
+		console.log('    清晰度代码 : ' + t_hd + ',    视频质量 : ' + t_quality);
+		console.log('    标题               : ' + t_title);
+		console.log('    保存文件的基础位置 : ' + t_base_path);
+		console.log('    自动生成的文件名举例 : ');
 		
 		// show some paths
 		for (var i = 0; i < v_info.file.length; i++) {
@@ -446,7 +446,7 @@ function test_host_task_next(_step, _host) {
 		console.log('');
 		
 		// ask user
-		_ui.ask_line('    Is this ok ? (Y/n) : ', function(text){
+		_ui.ask_line('    这可以吗? (Y/n) : ', function(text){
 			_host.answer = _b.pure_string(text);
 			
 			_next(_step + 1, _host);
@@ -457,7 +457,7 @@ function test_host_task_next(_step, _host) {
 		
 		// check answer
 		if (_host.answer != 'Y') {
-			time_log('INFO: you selected quit. ');
+			time_log('信息: 你选择了退出. ');
 			
 			_next(0, _host);
 			
@@ -467,7 +467,7 @@ function test_host_task_next(_step, _host) {
 		// refresh log
 		_m.refresh_log(function(err){
 			if (err) {
-				time_log('ERROR: refresh log failed ! 3 \n\n\n\n\n');
+				time_log('错误: 刷写日志文件失败 ! 3 \n\n\n\n\n');
 			}
 		});
 		
@@ -480,12 +480,12 @@ function test_host_task_next(_step, _host) {
 		
 		// before start task, set something
 		_.oh.callback = function(event){
-			time_log('got event: [' + event.type + '] id ' + event.id + ' \n\n\n\n');
+			time_log('发生了事件: [' + event.type + '] id ' + event.id + ' \n\n\n\n');
 			
 			// refresh log
 			_m.refresh_log(function(err){
 				if (err) {
-					time_log('ERROR: refresh log failed ! 4 \n\n\n\n');
+					time_log('错误: 刷写日志文件失败 ! 4 \n\n\n\n');
 				}
 			});
 			
@@ -503,7 +503,7 @@ function test_host_task_next(_step, _host) {
 			}
 		};
 		
-		time_log('INFO: starting dl ... ');
+		time_log('信息: 开始下载 ... ');
 		
 		// start watch
 		_host.stop_watch = watch_dl();
@@ -515,7 +515,7 @@ function test_host_task_next(_step, _host) {
 		_.refresh_log_obj = setTimeout(function refresh_log(){
 			_m.refresh_log(function(err){
 				if (err) {
-					time_log('ERROR: refresh log failed ! 7 \n\n\n\n\n');
+					time_log('错误: 刷写日志文件失败 ! 7 \n\n\n\n\n');
 				}
 			});
 			
@@ -530,7 +530,7 @@ function test_host_task_next(_step, _host) {
 		break;
 	case 12:	// all file dl ok
 		console.log('');
-		time_log('[ OK ] all files download done ! ');
+		time_log('[ OK ] 全部文件下载完成 ! ');
 		
 		// stop refresh_log
 		_.refresh_log_flag = false;
@@ -545,12 +545,12 @@ function test_host_task_next(_step, _host) {
 		// refresh log
 		_m.refresh_log(function(err){
 			if (err) {
-				time_log('ERROR: refresh log failed ! 5 \n\n\n\n');
+				time_log('错误: 刷写日志文件失败 ! 5 \n\n\n\n');
 			}
 		});
 		
 		// start merge
-		time_log('INFO: start auto merge video ... ');
+		time_log('信息: 开始 自动合并视频 ... ');
 		
 		_m.merge_video(_host.task_info, function(code){
 			_host.exit_code = code;
@@ -561,7 +561,7 @@ function test_host_task_next(_step, _host) {
 		break;
 	case 13:	// merge video done
 		
-		time_log('[ OK ] merge video done. exit_code : ' + _host.exit_code);
+		time_log('[ OK ] 合并视频完成. exit_code : ' + _host.exit_code);
 		
 		// ok finished
 		_next(0, _host);
@@ -628,7 +628,7 @@ function main_next(_step, _host) {
 		// init
 		_m.init(function(err){	// init finish callback
 			if (err) {
-				time_log('ERROR: init failed ! ');
+				time_log('错误: 初始化失败 ! ');
 				
 				_host.error = err;
 				
@@ -642,7 +642,7 @@ function main_next(_step, _host) {
 	case 2:	// after init
 		
 		// print init done
-		time_log('[ OK ] init done. ');
+		time_log('[ OK ] 初始化完成. ');
 		
 		// start test
 		test_host_task(function(err){
@@ -658,8 +658,6 @@ function main_next(_step, _host) {
 		break;
 	case 3:	// done
 		
-		time_log('INFO: test done. ');
-		
 		// remember to close ui CLI interface
 		_ui.close();
 		
@@ -671,7 +669,7 @@ function main_next(_step, _host) {
 		break;
 	case -1:	// error
 		
-		time_log('ERROR: test error ! ');
+		time_log('错误: 发生了错误 ! ');
 		
 		// close ui interface
 		_ui.close();

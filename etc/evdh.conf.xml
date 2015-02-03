@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <evdh>
-<!-- this is config file for evdh 
-   - version 0.1.0.0 test201501310011
+<!-- 这是 evdh 的配置文件 
+   - version 0.1.4.0 test201502031659 (public zh-cn version) (中文版) 
   -->
-<!-- evdh : EisF Video Download Helper, sceext <sceext@foxmail.com>, 2009EisF2015, 2015.01
-  -  this program is used to make video download more easy, with the help of <flv.cn> (or <flvxz.com>) 
+<!-- evdh : EisF Video Download Helper, EisF 视频下载助手, sceext <sceext@foxmail.com>, 2009EisF2015, 2015.01
+   - 这个程序是用来方便下载视频的, 使用 api.flvxz.com 的解析API (此解析服务由 flv.cn 提供) 
   -->
 	<head>
 		<filetype>uuid=1df11f80-183f-405f-b93c-4dff2ce08398</filetype>
@@ -12,42 +12,41 @@
 		<type>config_file</type>
 	</head>
 	<body>
+		<!-- 注意: 如果你不清楚某个配置选项的作用, 请不要修改. 错误的配置将很可能导致 evdh 崩溃 ! -->
 		<config>
-			<token_file>tmp/private.token</token_file> 	<!-- the file store the private token for flv.cn -->
-			<tmp_path>tmp</tmp_path> 	<!-- path to put tmp files -->
-			<log_path>tmp/log</log_path> 	<!-- path to put log files -->
-							<!-- NOTE log files are very important to evdh ! -->
-			<download_path>tmp/dl</download_path> <!-- path to save download video files -->
+			<token_file>tmp/private/token</token_file> 	<!-- 存放 私有 token 文件的位置 (从 api.flvxz.com 解析 URL 获取信息时要使用 token) -->
+			<tmp_path>tmp</tmp_path> 	<!-- 存放 临时文件 的位置 -->
+			<log_path>tmp/log</log_path> 	<!-- 存放 日志文件 的位置 -->
+							<!-- 注意: 日志文件 对 evdh 非常重要 ! -->
+			<download_path>tmp/dl</download_path> <!-- 存放 下载的 视频文件 的位置 -->
 			
-			<analyse_request_wait_ms>1100</analyse_request_wait_ms> 	<!-- flv.cn limit the analyse request to 1 time per second -->
-			<analyse_request_website>api.flvxz.com</analyse_request_website> 	<!-- default is api.flvxz.com -->
-			
-			<download_thread>2</download_thread> 	<!-- number of threads to download video files, default is 2 -->
-			<download_thread_max>5</download_thread_max> 	<!-- max nubmer of threads to download, limit -->
-			<download_buffer_size>2048</download_buffer_size> 	<!-- unit: KB, memory buffer size, to protect hard drive, default is 2MB -->
+			<download_thread>2</download_thread> 	<!-- 下载视频文件的 线程数, 默认是 2 -->
+			<download_buffer_size>2048</download_buffer_size> 	<!-- 单位: KB, 内存缓冲区的大小, 目的是保护硬盘, 默认值是 2MB -->
 			
 			<video_quality>best</video_quality>
-			<!-- video_quality : default quality of video to download, default quality is 'best'
-			   - you can use keywords : "best" to use the best quality as default
-			   - or you can use a number between 0 and 9 to define it
-			   -    0  lowest quality
-			   -    1  low quality
-			   -    2  middle quality
-			   -    3  high quality
-			   -    4  720p video
-			   -    5  1080p video
-			   -    6  high bitrate 1080p video
-			   -    7  better than hb 1080p
-			   -    8  4K video
-			   -    9  high bitrate 4K video
+			<!-- 视频质量 (视频 清晰度, 分辨率, 等) : 自动选择下载的视频质量, 默认值是 'best' (最好) 
+			   - 你可以使用关键字 : "best" 来自动选择最好的视频质量. 
+			   - 或者你可以使用一个在 0 和 9 之间的数字来指定默认视频质量. 
+			   -    0  超低质量
+			   -    1  低质量
+			   -    2  中等质量
+			   -    3  高质量
+			   -    4  720p 视频
+			   -    5  1080p 视频
+			   -    6  高码率 1080p 视频
+			   -    7  比 高码率 1080p 视频 更好 (原画) 
+			   -       (注意: 有的视频网站 "原画" 相当于 1080p 视频, 比 高码率 1080p 视频 质量更低 ! ) 
+			   -    8  4K 视频
+			   -    9  高码率 4K 视频
+			   - 注意: 目前版本的 evdh 只会自动选择 指定质量的视频, 如果没有 相应质量的视频, 
+			   -     evdh 会出错退出, 不会自动选择其它质量的视频. 
 			  -->
 			<user_agent>Mozilla/5.0 (X11; Linux x86_64; rv:35.0) Gecko/20100101 Firefox/35.0</user_agent>
-			<!-- use this user-agent in HTTP head to analyze video and download video file -->
-			
-			<old_log_file_max_size>16384</old_log_file_max_size>
-			<!-- limit of size of evdh old log file, in Byte, default is 16KB. 
-			   - This is used to prevent the old log file to grow too big. 
+			<!-- 使用此处指定的 user-agent (用户代理) 
+			   - 当 解析 或 下载 视频时, 会在 HTTP 头部使用 user-agent 
 			  -->
+			
+			<analyse_request_website>api.flvxz.com</analyse_request_website> 	<!-- default is api.flvxz.com -->
 			<merge_tool>./bin/merge_video.sh</merge_tool> 	<!-- path to merge video tool -->
 		</config>
 	</body>
