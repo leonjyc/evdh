@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<evdh>
+<!-- this is config file for evdh 
+   - version 0.1.0.0 test201501310011
+  -->
+<!-- evdh : EisF Video Download Helper, sceext <sceext@foxmail.com>, 2009EisF2015, 2015.01
+  -  this program is used to make video download more easy, with the help of <flv.cn> (or <flvxz.com>) 
+  -->
+	<head>
+		<filetype>uuid=1df11f80-183f-405f-b93c-4dff2ce08398</filetype>
+		<filetype_version>evdh_filetype_version_0.1.0.0_test201501310011</filetype_version>
+		<type>config_file</type>
+	</head>
+	<body>
+		<config>
+			<token_file>tmp/private.token</token_file> 	<!-- the file store the private token for flv.cn -->
+			<tmp_path>tmp</tmp_path> 	<!-- path to put tmp files -->
+			<log_path>tmp/log</log_path> 	<!-- path to put log files -->
+							<!-- NOTE log files are very important to evdh ! -->
+			<download_path>tmp/dl</download_path> <!-- path to save download video files -->
+			
+			<analyse_request_wait_ms>1100</analyse_request_wait_ms> 	<!-- flv.cn limit the analyse request to 1 time per second -->
+			<analyse_request_website>api.flvxz.com</analyse_request_website> 	<!-- default is api.flvxz.com -->
+			
+			<download_thread>2</download_thread> 	<!-- number of threads to download video files, default is 2 -->
+			<download_thread_max>5</download_thread_max> 	<!-- max nubmer of threads to download, limit -->
+			<download_buffer_size>2048</download_buffer_size> 	<!-- unit: KB, memory buffer size, to protect hard drive, default is 2MB -->
+			
+			<video_quality>best</video_quality>
+			<!-- video_quality : default quality of video to download, default quality is 'best'
+			   - you can use keywords : "best" to use the best quality as default
+			   - or you can use a number between 0 and 9 to define it
+			   -    0  lowest quality
+			   -    1  low quality
+			   -    2  middle quality
+			   -    3  high quality
+			   -    4  720p video
+			   -    5  1080p video
+			   -    6  high bitrate 1080p video
+			   -    7  better than hb 1080p
+			   -    8  4K video
+			   -    9  high bitrate 4K video
+			  -->
+			<user_agent>Mozilla/5.0 (X11; Linux x86_64; rv:35.0) Gecko/20100101 Firefox/35.0</user_agent>
+			<!-- use this user-agent in HTTP head to analyze video and download video file -->
+			
+			<old_log_file_max_size>16384</old_log_file_max_size>
+			<!-- limit of size of evdh old log file, in Byte, default is 16KB. 
+			   - This is used to prevent the old log file to grow too big. 
+			  -->
+			<merge_tool>./bin/merge_video.sh</merge_tool> 	<!-- path to merge video tool -->
+		</config>
+	</body>
+</evdh>
+
+
