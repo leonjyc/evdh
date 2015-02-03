@@ -1,6 +1,6 @@
 # README.md for evdh : EisF Video Download Helper 
 
-	version 0.1.1.0 test201502031504 (public version) 
+	version 0.1.2.0 test201502031751 (public version) 
 
 author sceext <sceext@foxmail.com> 2009EisF2015, 2015.01
 copyright 2015 sceext All rights reserved. 
@@ -11,7 +11,7 @@ evdh is used to download videos with the analyse service provided by flv.cn, mor
 
 uuid mark for this program evdh is 
 
-	uuid=1df11f80-183f-405f-b93c-4dff2ce08398
+	uuid=1df11f80-183f-405f-b93c-4dff2ce08398 (public version) 
 
 
 # install
