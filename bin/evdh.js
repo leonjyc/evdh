@@ -1,5 +1,5 @@
 /* evdh.js, used in node.js, main bin file for evdh : EisF Video Download Helper, sceext <sceext@foxmail.com> 2009EisF2015, 2015.01 
- * version 0.1.0.0 test201502031428 (public version) 
+ * version 0.1.3.0 test201502041943 (public win version) 
  * author sceext <sceext@foxmail.com> 2015.01 
  * copyright 2015 sceext 
  *
@@ -561,7 +561,7 @@ function test_host_task_next(_step, _host) {
 		break;
 	case 13:	// merge video done
 		
-		time_log('[ OK ] merge video done. exit_code : ' + _host.exit_code);
+		time_log(' merge video done. exit_code : ' + _host.exit_code);
 		
 		// ok finished
 		_next(0, _host);
@@ -624,6 +624,15 @@ function main_next(_step, _host) {
 	var _next = main_next;
 	switch (_step) {
 	case 1:	// first step
+		
+		// print out free software info, specially for win version
+		time_log('\n' + 
+			'    evdh  Copyright (C) 2015  sceext <sceext@foxmail.com> \n' + 
+			'    This program comes with ABSOLUTELY NO WARRANTY. \n' + 
+			'    This is free software, and you are welcome to redistribute it \n' + 
+			'    under certain conditions.\n' + 
+			' Please see README.md and LICENSE for more information. \n' + 
+			'\n');
 		
 		// init
 		_m.init(function(err){	// init finish callback
