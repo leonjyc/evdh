@@ -1,11 +1,11 @@
 # README.md for evdh : EisF Video Download Helper, EisF 视频下载助手 
 
-(version 0.1.3.0 test201502042130 (public win version) 
+(version 0.1.4.0 test201502051716 (public win version) 
 
-author sceext <sceext@foxmail.com> 2009EisF2015, 2015.01 
+author sceext <sceext@foxmail.com> 2009EisF2015, 2015.02 
 copyright 2015 sceext All rights reserved. 
 
-作者 sceext, 2015年01月 
+作者 sceext, 2015年02月 
 
 evdh 被用来方便下载视频, 使用 flv.cn 的 URL解析服务. 
 
@@ -190,11 +190,11 @@ evdh 目前只有基本的功能, 很多地方做的很粗糙.
 
 evdh public *win* version 的 最新版本 在 *windows 7 sp1 旗舰版 64位* 下测试. 
 
-evdh 基本能够运行. (2015.01) 
+evdh 基本能够运行. (2015.02) 
 
 ## evdh public version 测试信息
 
-这个程序现在 在 ArchLinux 上测试. (2015.01) 
+这个程序现在 在 ArchLinux 上测试. (2015.02) 
 
 **注意**: evdh 是写来 在 GNU/Linux 操作系统 上运行的, 使用 node.js 运行环境. 
 
