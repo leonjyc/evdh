@@ -1,9 +1,8 @@
-:: install.bat evdh install script for win version, sceext <sceext@foxmail.com> 2009EisF2015, 2015.01 
+:: install.bat evdh install script for win version, sceext <sceext@foxmail.com> 2009EisF2015, 2015.02 
 
-:: version 0.0.4.0 test201502042025 (public win version) 
+:: version 0.0.6.0 test201502051726 (public win version) 
 
-:: author sceext <sceext@foxmail.com> 2015.01
-
+:: author sceext <sceext@foxmail.com> 2015.02
 :: copyright 2015 sceext 
 
 ::
@@ -50,32 +49,34 @@
 
 @echo off
 
-title evdh : EisF Video Download Helper, version 0.1.2.0 (public win version), sceext ^<sceext@foxmail.com^> 
+title evdh : EisF 视频下载助手 安装脚本 (EisF Video Download Helper), version 0.1.3.0 (public win version), sceext ^<sceext@foxmail.com^> 
 
 :: start install
-echo evdh: INFO: starting install ... 
+echo evdh: 信息: 开始 安装 ... 
 
 :: install xmldom, node.js module
-echo evdh: INFO: install xmldom ... 
+echo evdh: 信息: 安装 node.js xmldom 模块 ... 
 md "C:\Users\%username%\AppData\Roaming\npm"
 cmd /c "npm install xmldom"
 
-title evdh : EisF Video Download Helper, version 0.1.2.0 (public win version), sceext ^<sceext@foxmail.com^> 
+title evdh : EisF 视频下载助手 安装脚本 (EisF Video Download Helper), version 0.1.3.0 (public win version), sceext ^<sceext@foxmail.com^> 
 
 :: make dir
-echo evdh: INFO: creating directories ... 
+echo evdh: 信息: 创建 目录结构 ... 
 
 md tmp
 md tmp\dl
 md tmp\log
 md tmp\private
+md tmp\ffmpeg
 
-echo ^<Please write your token here^> >> tmp\private\token.txt
+echo ^<请在此处写入你自己的 token^> >> tmp\private\token.txt
 
 :: install finished
-echo evdh: [ OK ] install done. 
-echo Please edit config file "etc\evdh.conf.xml" to your own needs. 
-echo Please write your own token in token file "tmp\private\token.txt"
+echo evdh: [ OK ] 安装 完成. 
+echo 请 根据你自己的需求 编辑 配置文件 "etc\evdh.conf.xml" 
+echo 请 在 token 文件 "tmp\private\token.txt" 中 写入你自己的 token ! 
+echo 请 将 自动合并分段视频 功能 用到的 ffmpeg.exe 复制到 tmp\ffmpeg
 
 pause
 :: end evdh.bat

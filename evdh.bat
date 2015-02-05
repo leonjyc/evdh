@@ -1,9 +1,8 @@
-:: evdh.bat evdh start script for win version, sceext <sceext@foxmail.com> 2009EisF2015, 2015.01 
+:: evdh.bat evdh start script for win version, sceext <sceext@foxmail.com> 2009EisF2015, 2015.02 
 
-:: version 0.1.3.0 test201502041948 (public win version) 
+:: version 0.1.4.0 test201502051720 (public win version) 
 
-:: author sceext <sceext@foxmail.com> 2015.01
-
+:: author sceext <sceext@foxmail.com> 2015.02
 :: copyright 2015 sceext 
 
 ::
@@ -50,7 +49,7 @@
 
 @echo off
 
-title evdh : EisF Video Download Helper, version 0.1.2.0 (public win version), sceext ^<sceext@foxmail.com^> 
+title evdh : EisF  ”∆µœ¬‘ÿ÷˙ ÷ (EisF Video Download Helper), version 0.1.3.0 (public win version), sceext ^<sceext@foxmail.com^> 
 
 node ./bin/evdh.js
 
