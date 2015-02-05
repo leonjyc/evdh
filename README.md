@@ -1,6 +1,9 @@
-# README.md for evdh : EisF Video Download Helper, EisF 视频下载助手 
+:: README.md for evdh 
 
-(version 0.1.5.0 test201502051819 (public win version) 
+# evdh : EisF 视频下载助手 
+(evdh : EisF Video Download Helper) 
+
+(version 0.1.6.0 test201502051857 (public win version) 
 
 author sceext <sceext@foxmail.com> 2009EisF2015, 2015.02 
 copyright 2015 sceext All rights reserved. 
@@ -31,10 +34,10 @@ uuid mark for this program evdh is
 ## install.bat
 
 evdh 的 *win* 版提供了安装脚本 *install.bat*, 双击运行它即可. 
-*install.bat* 会自动完成[剩余的安装过程][1]. 
+*install.bat* 会自动完成 *剩余的*安装过程[1]. 
 ([1] **注**: ffmpeg 仍然需要手动安装配置, *install.bat* 不会完成这项工作) 
 
-(**注意**: windows 可能会隐藏文件的扩展名, 所以 *install.bat* 可能看起来是 *install*) 
+(**注意**: *windows* 可能会隐藏文件的扩展名, 所以 *install.bat* 可能看起来是 *install*) 
 
 如果安装过程遇到错误或问题, 可以联系作者: 
 
@@ -80,6 +83,7 @@ token 被保存在一个单独的文件中, 而不是直接写入配置文件.
 ## 自动合并分段视频 功能
 
 evdh 使用 *ffmpeg* 来自动合并分段视频文件. 
+在合并分段视频时没有重新编码, 所以 速度很快, 且 不会 损伤 视频质量. 
 
 evdh 的 *win* 版用户需手动安装 *ffmpeg*. 
 
@@ -95,7 +99,7 @@ evdh 的 *win* 版用户需手动安装 *ffmpeg*.
 或者 修改 配置文件 中 *ffmpeg.exe* 文件的位置. 
 配置文件 此处: 
 
-	&lt;merge_tool>tmp\ffmpeg\ffmpeg.exe</merge_tool&gt;
+	<merge_tool>tmp\ffmpeg\ffmpeg.exe</merge_tool>;
 
 将其中的 *tmp\ffmpeg\ffmpeg.exe* 替换成 *ffmpeg.exe* 的位置即可. 
 
@@ -244,6 +248,6 @@ evdh public *win* version 的 最新版本 在 *windows 7 sp1 旗舰版 64位* �
 
 evdh EisF Video Download Helper EisF 视频下载助手 windows版 方便下载视频 flv.cn 解析服务 api.flvxz.com API 
 
-# end README.md
+:: end README.md
 
 
