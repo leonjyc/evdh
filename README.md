@@ -1,11 +1,11 @@
 # README.md for evdh : EisF Video Download Helper, EisF 视频下载助手 
 
-(version 0.1.3.0 test201502042130 (public win version) 
+(version 0.1.5.0 test201502051819 (public win version) 
 
-author sceext <sceext@foxmail.com> 2009EisF2015, 2015.01 
+author sceext <sceext@foxmail.com> 2009EisF2015, 2015.02 
 copyright 2015 sceext All rights reserved. 
 
-作者 sceext, 2015年01月 
+作者 sceext, 2015年02月 
 
 evdh 被用来方便下载视频, 使用 flv.cn 的 URL解析服务. 
 
@@ -31,12 +31,19 @@ uuid mark for this program evdh is
 ## install.bat
 
 evdh 的 *win* 版提供了安装脚本 *install.bat*, 双击运行它即可. 
-*install.bat* 会自动完成剩余的安装过程. 
+*install.bat* 会自动完成[剩余的安装过程][1]. 
+([1] **注**: ffmpeg 仍然需要手动安装配置, *install.bat* 不会完成这项工作) 
+
 (**注意**: windows 可能会隐藏文件的扩展名, 所以 *install.bat* 可能看起来是 *install*) 
 
 如果安装过程遇到错误或问题, 可以联系作者: 
 
 	sceext <sceext@foxmail.com>; QQ: 963593614 sceext 
+
+## ffmpeg
+
+需要使用 **自动合并分段视频** 功能的用户还应该 安装 *ffmpeg*. 
+详见 下方 *配置>自动合并分段视频 功能* 
 
 ## 一定要配置 ! 
 
@@ -48,7 +55,7 @@ evdh 安装之后不能立刻使用, 必须进行合适的配置.
 
 # 配置
 
-默认 配置文件 是 *etc/evdh.conf.xml* 
+默认 配置文件 是 *etc\evdh.conf.xml* 
 
 请根据你自己的需求修改配置文件. 
 
@@ -67,8 +74,30 @@ token 被保存在一个单独的文件中, 而不是直接写入配置文件.
 这样做是为了帮助保护你的 token. 
 你可以在配置文件中修改存储 token 的文件位置. 
 
-默认的 token 文件位置是 *tmp/private/token.txt* 
+默认的 token 文件位置是 *tmp\private\token.txt* 
 在使用这个程序下载视频之前, 你应该在 token 文件中写入你自己的 token. 
+
+## 自动合并分段视频 功能
+
+evdh 使用 *ffmpeg* 来自动合并分段视频文件. 
+
+evdh 的 *win* 版用户需手动安装 *ffmpeg*. 
+
+可以 从 ffmpeg 的 官方网站 上 下载并安装 *ffmpeg*. <http://ffmpeg.org/download.html> 
+
+或者 直接从以下地址下载 ffmpeg 的 *windows* 版本. <http://ffmpeg.zeranoe.com/builds/> 
+
+建议下载 "static" 版本. 下载之后 解压 *.7z* 压缩文件, 找出其中的 *ffmpeg.exe* 文件. 
+
+将 *ffmpeg.exe* 文件复制到 evdh 文件夹下的 *tmp\ffmpeg* 文件夹中. 
+(将来 evdh 会 调用 此程序: *tmp\ffmpeg\ffmpeg.exe*) 
+
+或者 修改 配置文件 中 *ffmpeg.exe* 文件的位置. 
+配置文件 此处: 
+
+	&lt;merge_tool>tmp\ffmpeg\ffmpeg.exe</merge_tool&gt;
+
+将其中的 *tmp\ffmpeg\ffmpeg.exe* 替换成 *ffmpeg.exe* 的位置即可. 
 
 
 # 运行 evdh 
@@ -113,7 +142,19 @@ evdh 还有 **中文版** (public zh-cn version) 和 **English version** (public
 
 # 版本
 
-当前版本 evdh version 0.1.2.0 test201502042104 (public win version) (windows 版) 
+当前版本 evdh version 0.1.3.0 test201502051748 (public win version) (windows 版) 
+
+## version 0.1.3.0 test201502051748 (public win version) (windows 版)
+
++ **自动合并分段视频** 功能 回归. 
+目前 evdh 仍然使用 **ffmpeg** 合并分段视频文件. 
+*win* 版 用户需自行下载准备 *ffmpeg.exe* 工具文件. 
+在此 *ffmpeg* 合并视频文件时仅仅是复制视频编码流, 没有进行重新编码. 
+所以 **速度很快**, 并且 视频质量 **不会有任何损失**. 
+
++ 程序界面改成 中文. 
+
++ 修改 一些 *windows* 本地化 的细节. 
 
 ## version 0.1.2.0 test201502042104 (public win version) (windows 版)
 
@@ -190,18 +231,18 @@ evdh 目前只有基本的功能, 很多地方做的很粗糙.
 
 evdh public *win* version 的 最新版本 在 *windows 7 sp1 旗舰版 64位* 下测试. 
 
-evdh 基本能够运行. (2015.01) 
+没有发现 evdh 的严重问题. (2015.02) 
 
 ## evdh public version 测试信息
 
-这个程序现在 在 ArchLinux 上测试. (2015.01) 
+这个程序现在 在 ArchLinux 上测试. (2015.02) 
 
 **注意**: evdh 是写来 在 GNU/Linux 操作系统 上运行的, 使用 node.js 运行环境. 
 
 
 # 关键字 keywords
 
-evdh EisF Video Download Helper windows版 方便下载视频 flv.cn 解析服务 api.flvxz.com API 
+evdh EisF Video Download Helper EisF 视频下载助手 windows版 方便下载视频 flv.cn 解析服务 api.flvxz.com API 
 
 # end README.md
 
