@@ -1,5 +1,5 @@
 /* merge_video.js, used in node.js, merge vidoe part file only for evdh win version, evdh : EisF Video Download Helper, sceext <sceext@foxmail.com> 2009EisF2015, 2015.02 
- * version 0.0.1.0 test201502051544 (public win version) 
+ * version 0.0.2.0 test201502051631 (public win version) 
  * author sceext <sceext@foxmail.com> 2015.02
  * copyright 2015 sceext 
  *
@@ -63,25 +63,27 @@ function make_config() {
 function make_list_file(callback) {
 	// create list file
 	var ws = fs.createWriteStream(etc.list_file);
+	var text = '';
 	
 	// write file list in list file
 	for (var i = 0; i < etc.files_to_merge.length; i++) {
 		var file = etc.files_to_merge[i];
 		
-		var text = 'file \'' + file + '\'\n';
-		
-		ws.write(new Buffer(text, 'utf-8'));
+		text += 'file \'' + file + '\'\n';
 	}
 	
-	// done
-	ws.on('drain', function(){
-		ws.end();	// end write file
+	// write it to file
+	ws.write(new Buffer(text, 'utf-8'), function(){
+		ws.end();
 		
 		callback();
 	});
 }
 
 function do_merge() {
+	// make list file
+	var list_file = path.relative(etc.merge_tool, etc.list_file);
+	
 	var args = ['-f', 'concat', '-i', etc.list_file, '-c', 'copy', etc.output_file];
 	
 	// create child process
