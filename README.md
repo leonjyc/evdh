@@ -1,16 +1,14 @@
-:: README.md for evdh 
-
-# evdh : EisF 视频下载助手 
-(evdh : EisF Video Download Helper) 
-
-(version 0.1.6.0 test201502051857 (public win version) 
+:: README.md for evdh (version 0.1.7.0 test201502052002 (public win version) 
 
 author sceext <sceext@foxmail.com> 2009EisF2015, 2015.02 
 copyright 2015 sceext All rights reserved. 
 
+# evdh : EisF 视频下载助手 
+(evdh : EisF Video Download Helper) 
+
 作者 sceext, 2015年02月 
 
-evdh 被用来方便下载视频, 使用 flv.cn 的 URL解析服务. 
+evdh 被用来 方便 视频下载, 使用 flv.cn 的 URL解析服务. 
 
 这是 evdh 的 *windows* 版. 
 
@@ -99,7 +97,7 @@ evdh 的 *win* 版用户需手动安装 *ffmpeg*.
 或者 修改 配置文件 中 *ffmpeg.exe* 文件的位置. 
 配置文件 此处: 
 
-	<merge_tool>tmp\ffmpeg\ffmpeg.exe</merge_tool>;
+	<merge_tool>tmp\ffmpeg\ffmpeg.exe</merge_tool>
 
 将其中的 *tmp\ffmpeg\ffmpeg.exe* 替换成 *ffmpeg.exe* 的位置即可. 
 
@@ -146,7 +144,7 @@ evdh 还有 **中文版** (public zh-cn version) 和 **English version** (public
 
 # 版本
 
-当前版本 evdh version 0.1.3.0 test201502051748 (public win version) (windows 版) 
+**当前版本** evdh version 0.1.3.0 test201502051748 (public win version) *(windows 版)* 
 
 ## version 0.1.3.0 test201502051748 (public win version) (windows 版)
 
