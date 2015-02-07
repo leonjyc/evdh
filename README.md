@@ -1,4 +1,4 @@
-:: README.md for evdh (version 0.1.7.0 test201502052002 (public win version) 
+:: README.md for evdh (version 0.1.8.0 test201502071050 (public win version) 
 
 author sceext <sceext@foxmail.com> 2009EisF2015, 2015.02 
 copyright 2015 sceext All rights reserved. 
@@ -136,10 +136,26 @@ please see LICENSE for more information.
 
 ## 其它分支
 
-你可以 从 以下地址 获取 evdh 的 其它版本: <https://github.com/sceext2/evdh> 
+你可以 从 以下地址 获取 evdh : 
+<https://github.com/sceext2/evdh> 
 同时 获取 evdh 的 源代码. 
 
-evdh 还有 **中文版** (public zh-cn version) 和 **English version** (public version) 
+这是 evdh 的 *windows*版. (public win version) branch version-win 
+
+<https://github.com/sceext2/evdh/tree/version-win>
+
+### evdh 还有这些 版本
+
+**中文版** (public zh-cn version) branch version-zh-cn 
+
+<https://github.com/sceext2/evdh/tree/version-zh-cn>
+
+**English version** (public version) branch version 
+
+<https://github.com/sceext2/evdh/tree/version>
+
+你也可以从以下地址 下载 evdh : 
+<https://github.com/sceext2/evdh/releases>
 
 
 # 版本
@@ -240,6 +256,22 @@ evdh public *win* version 的 最新版本 在 *windows 7 sp1 旗舰版 64位* �
 这个程序现在 在 ArchLinux 上测试. (2015.02) 
 
 **注意**: evdh 是写来 在 GNU/Linux 操作系统 上运行的, 使用 node.js 运行环境. 
+
+
+# 关于 sceext 和 2009EisF2015
+
+**sceext** 是我的 笔名. sceext 的 读法 是 s-c-e-e-x-t, 也就是说 sceext 没有 拼起来的读法. 
+
+sceext 没有特别的含义, 但是 *sceext* 可以唯一表示我. (几乎没有冲突) 
+
+**EisF** 是给我的程序加上的 专用标识. 
+
+EisF 的意思是 **E**isF **is** Eis**F**. 
+EisF 是 *分叉式* **递归**缩写. 
+(就像 GNU = GNU's Not Unix 一样) 
+EisF = EisF is EisF ([E]isF [is] Eis[F]) 
+
+**2009EisF2015** 表示 *EisF* 这个标识 从 *2009*年 开始使用, 直到现在 (*2015*年). 
 
 
 # 关键字 keywords
