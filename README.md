@@ -1,4 +1,4 @@
-:: README.md for evdh (version 0.1.10.0 test201502071149 (public win version) 
+:: README.md for evdh (version 0.1.11.0 test201502071224 (public win version) 
 
 author sceext <sceext@foxmail.com> 2009EisF2015, 2015.02 
 copyright 2015 sceext All rights reserved. 
@@ -160,7 +160,13 @@ please see LICENSE for more information.
 
 # 版本
 
-**当前版本** evdh version 0.1.3.0 test201502051748 (public win version) *(windows 版)* 
+**当前版本** version 0.1.3.1 test201502071222 (public win version) *(windows 版)* 
+
+## version 0.1.3.1 test201502071222 (public win version) 
+
++ 修复 UI bug: 选择视频 2, 显示选择了视频 1. 
+
++ UI 优化: 针对 *windows* 用户的使用习惯, 对大小写不敏感, 输入确认时, 输入 'Y' 或者 'y' 均可. 
 
 ## version 0.1.3.0 test201502051748 (public win version) (windows 版)
 

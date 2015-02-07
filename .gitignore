@@ -1,5 +1,5 @@
-# .gitignore for evdh, sceext <sceext@foxmail.com> 2009EisF2015, 2015.01 
-# version 0.0.3.0 test201502031449
+# .gitignore for evdh, sceext <sceext@foxmail.com> 2009EisF2015, 2015.02 
+# version 0.0.4.0 test201502071229
 
 # private token file
 *.token
@@ -17,6 +17,8 @@ node_modules/
 *.xml~
 *.log~
 *.md~
+
+*.bat~
 
 # end .gitignore
 
