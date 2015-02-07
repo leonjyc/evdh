@@ -1,4 +1,4 @@
-:: README.md for evdh (version 0.1.8.0 test201502071050 (public win version) 
+:: README.md for evdh (version 0.1.9.0 test201502071105 (public win version) 
 
 author sceext <sceext@foxmail.com> 2009EisF2015, 2015.02 
 copyright 2015 sceext All rights reserved. 
@@ -10,7 +10,7 @@ copyright 2015 sceext All rights reserved.
 
 evdh 被用来 方便 视频下载, 使用 flv.cn 的 URL解析服务. 
 
-这是 evdh 的 *windows* 版. 
+这是 evdh 的 *windows* 版. (public win version) 
 
 ## evdh 的 uuid 标记
 
