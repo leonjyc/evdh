@@ -1,4 +1,4 @@
-:: README.md for evdh (version 0.1.9.0 test201502071105 (public win version) 
+:: README.md for evdh (version 0.1.10.0 test201502071149 (public win version) 
 
 author sceext <sceext@foxmail.com> 2009EisF2015, 2015.02 
 copyright 2015 sceext All rights reserved. 
@@ -8,7 +8,7 @@ copyright 2015 sceext All rights reserved.
 
 作者 sceext, 2015年02月 
 
-evdh 被用来 方便 视频下载, 使用 flv.cn 的 URL解析服务. 
+**evdh 被用来 方便 视频下载, 使用 flv.cn 的 URL解析服务.** 
 
 这是 evdh 的 *windows* 版. (public win version) 
 
@@ -26,7 +26,7 @@ uuid mark for this program evdh is
 
 这个程序在 **node.js** 环境中运行. 
 
-请从 node.js 的官方网站上下载并安装 node.js 
+请从 node.js 的官方网站上下载并安装 *node.js* 
 	<http://nodejs.org/download/>
 
 ## install.bat
@@ -44,7 +44,7 @@ evdh 的 *win* 版提供了安装脚本 *install.bat*, 双击运行它即可.
 ## ffmpeg
 
 需要使用 **自动合并分段视频** 功能的用户还应该 安装 *ffmpeg*. 
-详见 下方 *配置>自动合并分段视频 功能* 
+详见 下方 *配置 > 自动合并分段视频功能* 
 
 ## 一定要配置 ! 
 
