@@ -26,7 +26,7 @@
 
 @echo off
 
-title evdh : EisF è§†é¢‘ä¸‹è½½åŠ©æ‰‹ (EisF Video Download Helper), version 0.1.3.1 (public win version), sceext ^<sceext@foxmail.com^> 
+title evdh : EisF ÊÓÆµÏÂÔØÖúÊÖ (EisF Video Download Helper), version 0.1.3.1 (public win version), sceext ^<sceext@foxmail.com^> 
 
 node ./bin/evdh.js
 

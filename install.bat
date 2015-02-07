@@ -26,20 +26,20 @@
 
 @echo off
 
-title evdh : EisF è§†é¢‘ä¸‹è½½åŠ©æ‰‹ å®‰è£…è„šæœ¬ (EisF Video Download Helper), version 0.1.3.1 (public win version), sceext ^<sceext@foxmail.com^> 
+title evdh : EisF ÊÓÆµÏÂÔØÖúÊÖ °²×°½Å±¾ (EisF Video Download Helper), version 0.1.3.1 (public win version), sceext ^<sceext@foxmail.com^> 
 
 :: start install
-echo evdh: ä¿¡æ¯: å¼€å§‹ å®‰è£… ... 
+echo evdh: ĞÅÏ¢: ¿ªÊ¼ °²×° ... 
 
 :: install xmldom, node.js module
-echo evdh: ä¿¡æ¯: å®‰è£… node.js xmldom æ¨¡å— ... 
+echo evdh: ĞÅÏ¢: °²×° node.js xmldom Ä£¿é ... 
 md "C:\Users\%username%\AppData\Roaming\npm"
 cmd /c "npm install xmldom"
 
-title evdh : EisF è§†é¢‘ä¸‹è½½åŠ©æ‰‹ å®‰è£…è„šæœ¬ (EisF Video Download Helper), version 0.1.3.1 (public win version), sceext ^<sceext@foxmail.com^> 
+title evdh : EisF ÊÓÆµÏÂÔØÖúÊÖ °²×°½Å±¾ (EisF Video Download Helper), version 0.1.3.1 (public win version), sceext ^<sceext@foxmail.com^> 
 
 :: make dir
-echo evdh: ä¿¡æ¯: åˆ›å»º ç›®å½•ç»“æ„ ... 
+echo evdh: ĞÅÏ¢: ´´½¨ Ä¿Â¼½á¹¹ ... 
 
 md tmp
 md tmp\dl
@@ -47,13 +47,13 @@ md tmp\log
 md tmp\private
 md tmp\ffmpeg
 
-echo ^<è¯·åœ¨æ­¤å¤„å†™å…¥ä½ è‡ªå·±çš„ token^> >> tmp\private\token.txt
+echo ^<ÇëÔÚ´Ë´¦Ğ´ÈëÄã×Ô¼ºµÄ token^> >> tmp\private\token.txt
 
 :: install finished
-echo evdh: [ OK ] å®‰è£… å®Œæˆ. 
-echo è¯· æ ¹æ®ä½ è‡ªå·±çš„éœ€æ±‚ ç¼–è¾‘ é…ç½®æ–‡ä»¶ "etc\evdh.conf.xml" 
-echo è¯· åœ¨ token æ–‡ä»¶ "tmp\private\token.txt" ä¸­ å†™å…¥ä½ è‡ªå·±çš„ token ! 
-echo è¯· å°† è‡ªåŠ¨åˆå¹¶åˆ†æ®µè§†é¢‘ åŠŸèƒ½ ç”¨åˆ°çš„ ffmpeg.exe å¤åˆ¶åˆ° tmp\ffmpeg
+echo evdh: [ OK ] °²×° Íê³É. 
+echo Çë ¸ù¾İÄã×Ô¼ºµÄĞèÇó ±à¼­ ÅäÖÃÎÄ¼ş "etc\evdh.conf.xml" 
+echo Çë ÔÚ token ÎÄ¼ş "tmp\private\token.txt" ÖĞ Ğ´ÈëÄã×Ô¼ºµÄ token ! 
+echo Çë ½« ×Ô¶¯ºÏ²¢·Ö¶ÎÊÓÆµ ¹¦ÄÜ ÓÃµ½µÄ ffmpeg.exe ¸´ÖÆµ½ tmp\ffmpeg
 
 pause
 :: end evdh.bat
