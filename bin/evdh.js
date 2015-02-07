@@ -1,5 +1,5 @@
 /* evdh.js, used in node.js, main bin file for evdh : EisF Video Download Helper, sceext <sceext@foxmail.com> 2009EisF2015, 2015.02 
- * version 0.1.5.0 test201502051701 (public win version) 
+ * version 0.1.6.0 test201502071220 (public win version) 
  * author sceext <sceext@foxmail.com> 2015.02 
  * copyright 2015 sceext 
  *
@@ -292,7 +292,7 @@ function test_host_task_next(_step, _host) {
 	case 4:	// got answer
 		console.log('');
 		
-		if (_host.answer == 'N') {
+		if ((_host.answer == 'N') || (_host.answer == 'n')) {
 			// start new task
 			_next('create_new_task', _host);
 			return;
@@ -393,7 +393,7 @@ function test_host_task_next(_step, _host) {
 		// ask ok
 		_ui.ask_line('    这可以吗? (Y/n) : ', function(text){
 			var t = _b.pure_string(text);
-			if (t != 'Y') {
+			if ((t != 'Y') && (t != 'y')) {
 				time_log('信息: 你选择了退出. ');
 				
 				_next(0, _host);
@@ -456,7 +456,7 @@ function test_host_task_next(_step, _host) {
 	case 10:	// got answer
 		
 		// check answer
-		if (_host.answer != 'Y') {
+		if ((_host.answer != 'Y') && (_host.answer != 'y')) {
 			time_log('信息: 你选择了退出. ');
 			
 			_next(0, _host);
