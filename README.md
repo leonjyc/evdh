@@ -1,4 +1,4 @@
-:: README.md for evdh (version 0.1.4.0 test201502071105 (public zh-cn version) 
+:: README.md for evdh (version 0.1.4.1 test201502071124 (public zh-cn version) 
 
 author sceext <sceext@foxmail.com> 2009EisF2015, 2015.02 
 copyright 2015 sceext All rights reserved. 
@@ -8,7 +8,7 @@ copyright 2015 sceext All rights reserved.
 
 作者 sceext, 2015年02月 
 
-evdh 被用来 方便 视频下载, 使用 flv.cn 的 URL解析服务. 
+**evdh 被用来 方便 视频下载, 使用 flv.cn 的 URL解析服务.** 
 
 这是 evdh 的 *中文*版. (public zh-cn version) 
 
@@ -62,8 +62,7 @@ uuid mark for this program evdh is
 [flv.cn] <http://flv.cn/> (<http://api.flvxz.com/>) 
 
 你可以尝试从这个网址免费得到一个 token 
-
-    <http://flv.cn/docs.php?doc=api> 
+<http://flv.cn/docs.php?doc=api> 
 
 **注意**: 请注意 token 对你非常重要. 所以你不应该告诉别人你的 token. 
 你应该像保存你的 密码 一样保存你的 token. 
