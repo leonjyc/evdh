@@ -1,20 +1,23 @@
-# README.md for evdh : EisF Video Download Helper, EisF 视频下载助手 
+:: README.md for evdh (version 0.1.4.0 test201502071105 (public zh-cn version) 
 
-	version 0.1.2.0 test201502031739 (public zh-cn version) 
-
-author sceext <sceext@foxmail.com> 2009EisF2015, 2015.01
+author sceext <sceext@foxmail.com> 2009EisF2015, 2015.02 
 copyright 2015 sceext All rights reserved. 
 
-作者 sceext, 2015年01月 
+# evdh : EisF 视频下载助手 
+(evdh : EisF Video Download Helper) 
 
-evdh 被用来方便下载视频, 使用 flv.cn 的 URL解析服务. 
+作者 sceext, 2015年02月 
+
+evdh 被用来 方便 视频下载, 使用 flv.cn 的 URL解析服务. 
+
+这是 evdh 的 *中文*版. (public zh-cn version) 
 
 ## evdh 的 uuid 标记
 
 这个 evdh 程序的 uuid 标记是 
 uuid mark for this program evdh is 
 
-	uuid=1df11f80-183f-405f-b93c-4dff2ce08398 (public version) 
+	uuid=1df11f80-183f-405f-b93c-4dff2ce08398 (public zh-cn version) 
 
 
 # 安装
@@ -106,10 +109,33 @@ please see LICENSE for more information.
     You should have received a copy of the GNU General Public License
     along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
+## 其它分支
+
+你可以 从 以下地址 获取 evdh : 
+<https://github.com/sceext2/evdh> 
+同时 获取 evdh 的 源代码. 
+
+这是 evdh 的 *中文*版. (public zh-cn version) branch version-zh-cn 
+
+<https://github.com/sceext2/evdh/tree/version-zh-cn>
+
+### evdh 还有这些 版本
+
+**English version** (public version) branch version 
+
+<https://github.com/sceext2/evdh/tree/version>
+
+*windows* **版** (public win version) branch version-win 
+
+<https://github.com/sceext2/evdh/tree/version-win>
+
+你也可以从以下地址 下载 evdh : 
+<https://github.com/sceext2/evdh/releases>
+
 
 # 版本
 
-当前版本 evdh version 0.1.2.0 test201502031707 (public zh-cn version) (中文版) 
+**当前版本** evdh version 0.1.2.0 test201502031707 (public zh-cn version) (中文版) 
 
 ## version 0.1.2.0 test201502031707 (public zh-cn version) (中文版)
 
@@ -154,7 +180,7 @@ evdh 现在可以自动解析URL, 使用 flv.cn 提供的 Web API 获取信息 (
 
 + evdh 有日志文件, 并且支持断点续传. 所以你可以在退出 evdh 后继续未完成的下载任务. 
 (下次启动 evdh 可以选择继续任务) 
-注意: evdh 目前没有实现 重新解析, 所以开始任务后, 请尽快下载完成. 
+**注意**: evdh 目前没有实现 重新解析, 所以开始任务后, 请尽快下载完成. 
 因为视频网站的下载地址可能几个小时后就失效了. 
 如果下载地址失效, evdh 将不能够继续任务, 只能从头重新开始下载. 
 
@@ -169,10 +195,31 @@ evdh 目前只有基本的功能, 很多地方做的很粗糙.
 
 # 测试信息
 
-这个程序现在 在 ArchLinux 上测试. (2015.01) 
+这个程序现在 在 ArchLinux 上测试. (2015.02) 
 
-注意: evdh 是写来 在 GNU/Linux 操作系统 上运行的, 使用 node.js 运行环境. 
+**注意**: evdh 是写来 在 GNU/Linux 操作系统 上运行的, 使用 node.js 运行环境. 
 
-# end README.md
+
+# 关于 sceext 和 2009EisF2015
+
+**sceext** 是我的 笔名. sceext 的 读法 是 s-c-e-e-x-t, 也就是说 sceext 没有 拼起来的读法. 
+
+sceext 没有特别的含义, 但是 *sceext* 可以唯一表示我. (几乎没有冲突) 
+
+**EisF** 是给我的程序加上的 专用标识. 
+
+EisF 的意思是 **E**isF **is** Eis**F**. 
+EisF 是 *分叉式* **递归**缩写. 
+(就像 GNU = GNU's Not Unix 一样) 
+EisF = EisF is EisF ([E]isF [is] Eis[F]) 
+
+**2009EisF2015** 表示 *EisF* 这个标识 从 *2009*年 开始使用, 直到现在 (*2015*年). 
+
+
+# 关键字 keywords
+
+evdh EisF Video Download Helper EisF 视频下载助手 中文版 方便下载视频 flv.cn 解析服务 api.flvxz.com API 
+
+:: end README.md
 
 
