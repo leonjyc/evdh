@@ -1,6 +1,6 @@
-/* evdh.js, used in node.js, main bin file for evdh : EisF Video Download Helper, sceext <sceext@foxmail.com> 2009EisF2015, 2015.01 
- * version 0.1.0.0 test201502031428 (public version) 
- * author sceext <sceext@foxmail.com> 2015.01 
+/* evdh.js, evdh: main bin file for evdh : EisF Video Download Helper, sceext <sceext@foxmail.com> 2009EisF2015, 2015.02 
+ * version 0.1.14.0 test201502141956 (public version)
+ * author sceext <sceext@foxmail.com> 2015.02 
  * copyright 2015 sceext 
  *
  * This is FREE SOFTWARE, released under GNU GPLv3+ 
@@ -21,6 +21,13 @@
  *
  *    You should have received a copy of the GNU General Public License
  *    along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ *
+ *
+ * exit code
+ *    0 ok
+ *    1 unknow
+ *    2 command line format error
+ *    3 other error
  *
  */
 
@@ -60,10 +67,8 @@ function watch_dl() {	// no callback
 	_host.timeout = null;	// timeout object
 	
 	_host.index = {};
-	_host.first_show = true;
 	
 	_host.last_line = 0;
-	_host.moved = false;
 	
 	_host.stop = false;
 	
@@ -98,6 +103,26 @@ function watch_dl_next(_step, _host) {
 		var oh_done_file = oh_st.count.done;
 		var oh_error_file = oh_st.count.error;
 		
+		// get o_host_task status
+		var task_i = _.oh.get_status();
+		
+		// reset last_line
+		_host.last_line = 0;
+		
+		// before refresh, clear screen down
+		_ui.clear_down();
+		
+		var fw = _ui.force_width;
+		// print a line
+		console.log('');	// console task info
+		time_log('task info : '
+			+ '(' + fw(oh_done_file, 2, true) + '/' + fw(oh_all_file, 2, true) + ') ' 
+			+ '  error ' + fw(oh_error_file, 2, true) + ' ' 
+			+ '========================='
+		);
+		
+		_host.last_line += 2;
+		
 		// get ids
 		var ids = _.dl.get_id_list();
 		for (var j = 0; j < ids.length; j++) {	// process each ids
@@ -123,30 +148,36 @@ function watch_dl_next(_step, _host) {
 			var ed_ms = ((new Date()).getTime()) - (st.start_time.getTime());
 			var ed_s = Math.floor(ed_ms / 1e3);
 			
-			// check first show
-			if (_host.first_show) {
-				console.log('');
-				_host.first_show = false;
+			// get all byte
+			var all_byte = 0;
+			var iid = parseInt(id, 10);
+			var ifile = task_i.list[iid];
+			if (ifile) {
+				all_byte = ifile.all_byte;
 			}
 			
-			// move up
-			if (!_host.moved) {
-				_ui.move_by(0, - _host.last_line);
-				_host.last_line = 0;
-				
-				_host.moved = true;
+			var finished_p = 0;
+			if (all_byte != 0) {
+				finished_p = ed_byte / all_byte;
 			}
 			
-			var fw = _ui.force_width;
 			// console out
-			console.log('(' + fw(oh_done_file, 2, true) + '/' + fw(oh_all_file, 2, true) + ') [ ' + fw(oh_error_file, 2, true) + ' ] ' + fw(id, 2, true) + ' : [ ' + st.status + ' ] ' + _ui.get_show_file_size(ed_byte) + ' ' + _ui.get_show_time(ed_s) + ' ' + _ui.get_show_dl_speed(speed) + ' ');
+			console.log(' '
+				+ fw(id, 3, true) + ' : [ ' + st.status + ' ]' 
+				+ fw(_ui.make_rest_num(finished_p * 1e2, 2) + '%', 8, true) + ' '
+				+ fw(_ui.get_show_file_size(ed_byte), 10, true) + ' ' 
+				+ fw('(' + ed_byte + ' Byte)', 17, true) + ' ' 
+				+ _ui.get_show_time(ed_s) + ' ' 
+				+ fw(_ui.get_show_dl_speed(speed), 13, true) + ' ' 
+			);
 			
 			// count last line
 			_host.last_line ++;
 		}
 		
-		_host.moved = false;
-		
+		// just move up, after print info
+		_ui.move_by(0, - _host.last_line);
+		_host.last_line = 0;
 		
 		if (_host.stop) {
 			return;
@@ -224,7 +255,18 @@ function test_host_task_next(_step, _host) {
 		});
 		
 		break;
-	case 3:	// check log
+	case 3:	// check auto_url mode
+		if (_.cl_global_mode == 'auto_url') {
+			// do not check log, just create new task
+			console.log('');
+			time_log('INFO: in \'auto_url\' mode, not check log, just create new task. \n');
+			
+			_next('create_new_task', _host);
+			
+			return;
+		}
+		
+		// check log
 		
 		var logs = _.ol.get_list();
 		var found = [false, false];
@@ -281,6 +323,16 @@ function test_host_task_next(_step, _host) {
 		console.log('\n    count ' + task_i.count.all_file + ' files, ' + _ui.get_show_file_size(task_i.count.all_byte) + ' ' + _ui.get_show_time(task_i.count.all_time_s) + ', doing ' + task_i.count.doing + ', wait ' + task_i.count.wait + ', error ' + task_i.count.error + ' ');
 		console.log('    done ' + task_i.count.done + ' files, ' + _ui.get_show_file_size(task_i.count.ed_byte) + ', ' + (_ui.make_rest_num((task_i.count.ed_byte / task_i.count.all_byte) * 1e2, 2)) + '% \n');
 		
+		// check auto_continue mode
+		if (_.cl_global_mode == 'auto_continue') {
+			console.log('');
+			time_log('INFO: in \'auto_continue\' mode, do not ask user, just auto answer YES to continue unfinished task. \n');
+			_host.answer = 'y';
+			
+			_next(_step + 1, _host);
+			return;
+		}
+		
 		// ask user
 		_ui.ask_line('    Do you want to continue it ? (y/N) : ', function(text){
 			_host.answer = text;
@@ -313,6 +365,28 @@ function test_host_task_next(_step, _host) {
 	case 'create_new_task':
 	case 5:	//
 		_step = 5;
+		
+		// check auto_continue mode
+		if (_.cl_global_mode == 'auto_continue') {
+			console.log('');
+			time_log('ERROR: in \'auto_continue\' mode. Can not continue task. Not create new task. \n');
+			
+			_host.error = true;
+			_next(-1, _host);
+			return;
+		}
+		
+		// check auto_url mode
+		if (_.cl_global_mode == 'auto_url') {
+			// input url from command line
+			_host.input_url = _.cl_url;
+			
+			console.log('');
+			time_log('INFO: in \'auto_url\' mode, auto get url from command line. \n');
+			
+			_next(_step + 1, _host);
+			return;
+		}
 		
 		console.log('');
 		
@@ -390,6 +464,15 @@ function test_host_task_next(_step, _host) {
 		
 		console.log('');
 		
+		// check auto_url mode
+		if (_.cl_global_mode == 'auto_url') {
+			console.log('');
+			time_log('INFO: in \'auto_url\' mode, do not ask user, just auto answer YES. \n');
+			
+			_next(_step + 1, _host);
+			return;
+		}
+		
 		// ask ok
 		_ui.ask_line('    Is this ok ? (Y/n) : ', function(text){
 			var t = _b.pure_string(text);
@@ -434,9 +517,9 @@ function test_host_task_next(_step, _host) {
 		
 		// show some paths
 		for (var i = 0; i < v_info.file.length; i++) {
-			var path = v_info.file[i].path;
+			var fpath = v_info.file[i].path;
 			
-			console.log('        ' + path);
+			console.log('        ' + fpath);
 			
 			if (i > 3) {	// show at most 5 paths
 				break;
@@ -444,6 +527,17 @@ function test_host_task_next(_step, _host) {
 		}
 		
 		console.log('');
+		
+		// check auto_url mode
+		if (_.cl_global_mode == 'auto_url') {
+			console.log('');
+			time_log('INFO: in \'auto_url\' mode, do not ask user, just auto answer YES. \n');
+			
+			_host.answer = 'Y';
+			
+			_next(_step + 1, _host);
+			return;
+		}
 		
 		// ask user
 		_ui.ask_line('    Is this ok ? (Y/n) : ', function(text){
@@ -467,7 +561,7 @@ function test_host_task_next(_step, _host) {
 		// refresh log
 		_m.refresh_log(function(err){
 			if (err) {
-				time_log('ERROR: refresh log failed ! 3 \n\n\n\n\n');
+				time_log('ERROR: refresh log failed ! 3 \n');
 			}
 		});
 		
@@ -480,26 +574,33 @@ function test_host_task_next(_step, _host) {
 		
 		// before start task, set something
 		_.oh.callback = function(event){
-			time_log('got event: [' + event.type + '] id ' + event.id + ' \n\n\n\n');
-			
 			// refresh log
 			_m.refresh_log(function(err){
 				if (err) {
-					time_log('ERROR: refresh log failed ! 4 \n\n\n\n');
+					time_log('ERROR: refresh log failed ! 4 \n');
 				}
 			});
 			
-			// check event is 'dl_done'
-			if (event.type == 'dl_done') {
+			// check event type
+			switch (event.type) {
+			case 'dl_done':	// event is 'dl_done'
 				// next step
 				_next(_step + 1, _host);
 				
 				return;
-			}
-			
-			// check event is part_error
-			if (event.type == 'part_error') {
+				
+				break;
+			case 'part_done':
+				time_log('[ OK ] part file download done. id ' + event.id + ' ');
+				console.log('');
+				
+				break;
+			case 'part_error':
+				time_log('ERROR: part file download failed ! id ' + event.id + ' ');
 				console.log(event.list);	// show detile error info
+				console.log('');
+				
+				break;
 			}
 		};
 		
@@ -515,7 +616,7 @@ function test_host_task_next(_step, _host) {
 		_.refresh_log_obj = setTimeout(function refresh_log(){
 			_m.refresh_log(function(err){
 				if (err) {
-					time_log('ERROR: refresh log failed ! 7 \n\n\n\n\n');
+					time_log('ERROR: refresh log failed ! 7 \n');
 				}
 			});
 			
@@ -530,7 +631,8 @@ function test_host_task_next(_step, _host) {
 		break;
 	case 12:	// all file dl ok
 		console.log('');
-		time_log('[ OK ] all files download done ! ');
+		time_log('[ OK ] all files download done ! \n');
+		console.log('\n');
 		
 		// stop refresh_log
 		_.refresh_log_flag = false;
@@ -539,13 +641,13 @@ function test_host_task_next(_step, _host) {
 		// stop watch
 		_host.stop_watch();
 		
-		// remove task, and save info
-		_host.task_info = _.oh.remove();
+		// get task info
+		_host.task_info = _.oh.get_status();
 		
 		// refresh log
 		_m.refresh_log(function(err){
 			if (err) {
-				time_log('ERROR: refresh log failed ! 5 \n\n\n\n');
+				time_log('ERROR: refresh log failed ! 5 \n');
 			}
 		});
 		
@@ -561,7 +663,25 @@ function test_host_task_next(_step, _host) {
 		break;
 	case 13:	// merge video done
 		
+		console.log('');
 		time_log('[ OK ] merge video done. exit_code : ' + _host.exit_code);
+		
+		// check exit code
+		if (_host.exit_code == 0) {
+			// merge ok
+			
+			// remove task
+			_.oh.remove();
+			
+			// refresh log
+			_m.refresh_log(function(err){
+				if (err) {
+					time_log('ERROR: refresh log failed ! 9 \n');
+				} else {
+					time_log('[ OK ] all works done. ');
+				}
+			});
+		}
 		
 		// ok finished
 		_next(0, _host);
@@ -625,6 +745,34 @@ function main_next(_step, _host) {
 	switch (_step) {
 	case 1:	// first step
 		
+		// process command line args
+		switch (process.argv[2]) {	// first argument
+		case 'mode_normal':	// normal mode, interactive download
+			
+			// just save it to _
+			_.cl_global_mode = 'normal';	// cl command line, global mode
+			
+			break;
+		case 'mode_auto_url':	// auto mode, input url, no interactive ask any more
+			
+			_.cl_global_mode = 'auto_url';
+			_.cl_url = process.argv[3];	// save inputed url
+			
+			break;
+		case 'mode_auto_continue':	// auto mode, auto continue unfinished task
+			
+			_.cl_global_mode = 'auto_continue';
+			
+			break;
+		default:	// command line format error
+			
+			time_log('ERROR: command line error ! ');
+			
+			process.exit(2);	// exit now
+			
+			return;
+		}
+		
 		// init
 		_m.init(function(err){	// init finish callback
 			if (err) {
@@ -658,8 +806,6 @@ function main_next(_step, _host) {
 		break;
 	case 3:	// done
 		
-		time_log('INFO: test done. ');
-		
 		// remember to close ui CLI interface
 		_ui.close();
 		
@@ -667,6 +813,9 @@ function main_next(_step, _host) {
 		
 		break;
 	case 0:	// finish step
+		
+		// exit ok
+		process.exit(0);
 		
 		break;
 	case -1:	// error
@@ -680,6 +829,9 @@ function main_next(_step, _host) {
 		if (_host.error !== true) {
 			console.log(_host.error);
 		}
+		
+		// exit error
+		process.exit(3);
 		
 		break;
 	default:	// step error

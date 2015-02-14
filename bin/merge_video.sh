@@ -1,8 +1,8 @@
 #!/bin/sh
 #
-# merge_video.sh, used auto merge parts video for evdh: EisF Video Download Helper, sceext <sceext@foxmail.com> 2009EisF2015, 2015.01 
+# merge_video.sh, used auto merge parts video for evdh: EisF Video Download Helper, sceext <sceext@foxmail.com> 2009EisF2015, 2015.02 
 # version 0.1.2.0 test201502031421 (public version) 
-# author sceext <sceext@foxmail.com> 2015.01 
+# author sceext <sceext@foxmail.com> 2015.02 
 # copyright 2015 sceext 
 #
 # This is FREE SOFTWARE, released under GNU GPLv3+ 

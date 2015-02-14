@@ -1,11 +1,10 @@
-# .gitignore for evdh, sceext <sceext@foxmail.com> 2009EisF2015, 2015.01 
-# version 0.0.3.0 test201502031449
-
-# private token file
-*.token
+# .gitignore for evdh, sceext <sceext@foxmail.com> 2009EisF2015, 2015.02 
+# version 0.1.2.0 test201502141905
 
 # ignore tmp file for evdh
 tmp/
+dl/
+dl
 
 # ignore node.js module dir
 node_modules/
