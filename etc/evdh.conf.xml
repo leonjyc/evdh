@@ -1,55 +1,69 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <evdh>
-<!-- 这是 evdh 的配置文件 
-   - version 0.1.4.0 test201502031659 (public zh-cn version) (中文版) 
+<!-- 这是 evdh 的配置文件 (evdh version 0.1.6.0 (public zh-cn version) (中文版) 
+   - version 0.1.5.0 test201502150034 (public zh-cn version) 
   -->
-<!-- evdh : EisF Video Download Helper, EisF 视频下载助手, sceext <sceext@foxmail.com>, 2009EisF2015, 2015.01
+<!-- evdh : EisF Video Download Helper, EisF 视频下载助手, sceext <sceext@foxmail.com>, 2009EisF2015, 2015.02
    - 这个程序是用来方便下载视频的, 使用 api.flvxz.com 的解析API (此解析服务由 flv.cn 提供) 
   -->
-	<head>
-		<filetype>uuid=1df11f80-183f-405f-b93c-4dff2ce08398</filetype>
-		<filetype_version>evdh_filetype_version_0.1.0.0_test201501310011</filetype_version>
-		<type>config_file</type>
-	</head>
-	<body>
-		<!-- 注意: 如果你不清楚某个配置选项的作用, 请不要修改. 错误的配置将很可能导致 evdh 崩溃 ! -->
-		<config>
-			<token_file>tmp/private/token</token_file> 	<!-- 存放 私有 token 文件的位置 (从 api.flvxz.com 解析 URL 获取信息时要使用 token) -->
-			<tmp_path>tmp</tmp_path> 	<!-- 存放 临时文件 的位置 -->
-			<log_path>tmp/log</log_path> 	<!-- 存放 日志文件 的位置 -->
-							<!-- 注意: 日志文件 对 evdh 非常重要 ! -->
-			<download_path>tmp/dl</download_path> <!-- 存放 下载的 视频文件 的位置 -->
-			
-			<download_thread>2</download_thread> 	<!-- 下载视频文件的 线程数, 默认是 2 -->
-			<download_buffer_size>2048</download_buffer_size> 	<!-- 单位: KB, 内存缓冲区的大小, 目的是保护硬盘, 默认值是 2MB -->
-			
-			<video_quality>best</video_quality>
-			<!-- 视频质量 (视频 清晰度, 分辨率, 等) : 自动选择下载的视频质量, 默认值是 'best' (最好) 
-			   - 你可以使用关键字 : "best" 来自动选择最好的视频质量. 
-			   - 或者你可以使用一个在 0 和 9 之间的数字来指定默认视频质量. 
-			   -    0  超低质量
-			   -    1  低质量
-			   -    2  中等质量
-			   -    3  高质量
-			   -    4  720p 视频
-			   -    5  1080p 视频
-			   -    6  高码率 1080p 视频
-			   -    7  比 高码率 1080p 视频 更好 (原画) 
-			   -       (注意: 有的视频网站 "原画" 相当于 1080p 视频, 比 高码率 1080p 视频 质量更低 ! ) 
-			   -    8  4K 视频
-			   -    9  高码率 4K 视频
-			   - 注意: 目前版本的 evdh 只会自动选择 指定质量的视频, 如果没有 相应质量的视频, 
-			   -     evdh 会出错退出, 不会自动选择其它质量的视频. 
-			  -->
-			<user_agent>Mozilla/5.0 (X11; Linux x86_64; rv:35.0) Gecko/20100101 Firefox/35.0</user_agent>
-			<!-- 使用此处指定的 user-agent (用户代理) 
-			   - 当 解析 或 下载 视频时, 会在 HTTP 头部使用 user-agent 
-			  -->
-			
-			<analyse_request_website>api.flvxz.com</analyse_request_website> 	<!-- default is api.flvxz.com -->
-			<merge_tool>./bin/merge_video.sh</merge_tool> 	<!-- path to merge video tool -->
-		</config>
-	</body>
+<head>
+	<filetype>uuid=1df11f80-183f-405f-b93c-4dff2ce08398</filetype>
+	<filetype_version>evdh_filetype_version_0.1.0.0_test201501310011</filetype_version>
+	<type>config_file</type>
+</head>
+<body>
+	<!-- 注意: 如果你不清楚某个配置选项的作用, 请不要修改. 错误的配置将很可能导致 evdh 崩溃 ! -->
+	<config>
+		<token_file>tmp/private/token</token_file> 	<!-- 存放 私有 token 文件的位置 (从 api.flvxz.com 解析 URL 获取信息时要使用 token) -->
+		<tmp_path>tmp</tmp_path> 	<!-- 存放 临时文件 的位置 -->
+		<log_path>tmp/log</log_path> 	<!-- 存放 日志文件 的位置 -->
+						<!-- 注意: 日志文件 对 evdh 非常重要 ! -->
+		<download_path>tmp/dl</download_path> <!-- 存放 下载的 视频文件 的位置 -->
+		
+		<download_thread>2</download_thread> 	<!-- 下载视频文件的 线程数, 默认是 2 -->
+		<download_buffer_size>2048</download_buffer_size> 	<!-- 单位: KB, 内存缓冲区的大小, 目的是保护硬盘, 默认值是 2MB -->
+		
+		<video_quality>best</video_quality>
+		<!-- 视频质量 (视频 清晰度, 分辨率, 等) : 自动选择下载的视频质量, 默认值是 'best' (最好) 
+		   - 你可以使用关键字 : "best" 来自动选择最好的视频质量. 
+		   - 或者你可以使用一个在 0 和 9 之间的数字来指定默认视频质量. 
+		   -    0  超低质量
+		   -    1  低质量
+		   -    2  中等质量
+		   -    3  高质量
+		   -    4  720p 视频
+		   -    5  1080p 视频
+		   -    6  高码率 1080p 视频
+		   -    7  比 高码率 1080p 视频 更好 (原画) 
+		   -       (注意: 有的视频网站 "原画" 相当于 1080p 视频, 比 高码率 1080p 视频 质量更低 ! ) 
+		   -    8  4K 视频
+		   -    9  高码率 4K 视频
+		   - 注意: 目前版本的 evdh 只会自动选择 指定质量的视频, 如果没有 相应质量的视频, 
+		   -     evdh 会出错退出, 不会自动选择其它质量的视频. 
+		  -->
+		<auto_quality_keywords>分段 MP4</auto_quality_keywords>
+		<!-- 自动选择视频 的 关键字 列表
+		   -
+		   - 在 交互式模式, 如果有超过 1 个视频被选择 (根据 视频质量), evdh 会 让用户选择一个. 
+		   - 但是在 自动 模式 ('auto_url' 模式), evdh 不会询问用户, 而是自动选择视频. 
+		   -
+		   - evdh 使用 此处设定的 关键字列表 从视频的 'quality' 属性中进行选择. 
+		   - 首先 evdh 使用 第一个 关键字 筛选 视频, 如果仍然选择了超过 1 个视频, 
+		   - evdh 会使用第 2 个关键字. 以此类推. 直到仅剩一个视频, evdh 会自动下载它. 
+		   - 如果无法选择一个视频, evdh 会出错退出. 
+		   -
+		   - 这些 关键字 用 空格 (' ') 分开. 
+		  -->
+
+		<!-- 注意 高级选项
+		   - 请勿更改, 除非 你理解 这些选项. 
+		  -->
+		<user_agent>Mozilla/5.0 (X11; Linux x86_64; rv:35.0) Gecko/20100101 Firefox/35.0</user_agent>
+		<!-- 使用此处指定的 user-agent (用户代理). 当 解析 或 下载 视频时, 会在 HTTP 头部使用 user-agent -->
+		<analyse_request_website>api.flvxz.com</analyse_request_website> 	<!-- default is api.flvxz.com -->
+		<merge_tool>./bin/merge_video.sh</merge_tool> 	<!-- path to merge video tool -->
+	</config>
+</body>
 </evdh>
 
 
