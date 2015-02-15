@@ -1,6 +1,6 @@
-:: README.md for evdh (version 0.1.7.0 test201502150225 (public zh-cn version) 
+:: README.md for evdh (version 0.1.8.0 test201502151442 (public zh-cn version) 
 
-author sceext <sceext@foxmail.com> 2009EisF2015, 2015.02 
+author sceext <sceext@foxmail.com> 2009EisF2015, 2015.02 <br />
 copyright 2015 sceext All rights reserved. 
 
 # evdh : EisF 视频下载助手 
@@ -10,49 +10,42 @@ copyright 2015 sceext All rights reserved.
 
 **evdh 可以用来 方便 视频下载, 使用 [flv.cn](http://flv.cn) 的 URL解析服务.** 
 
-这是 evdh 的 *中文*版. (public zh-cn version) branch version-zh-cn 
-
-#### evdh 的 uuid 标记
-
-这个 evdh 程序的 uuid 标记是 
-uuid mark for this program evdh is 
-
-	uuid=1df11f80-183f-405f-b93c-4dff2ce08398 (public zh-cn version) 
+这是 evdh 的 *中文*版. `(public zh-cn version) branch version-zh-cn` 
 
 
 ## 安装
 
-+ node.js
++ **node.js**
   
   这个程序在 **node.js** 环境中运行. 
   
-  你可以在 ArchLinux 上使用 *pacman* 安装 node.js 
+  你可以在 ArchLinux 上使用 `pacman` 安装 node.js 
   
-  	$ sudo pacman -S nodejs
+  > $ sudo pacman -S nodejs
   
-  或者 你可以在 Debian/Ubuntu 上使用 *apt-get* 或 在 Fedora/Redhat 上使用 *yum* 安装 node.js 
+  或者 你可以在 Debian/Ubuntu 上使用 `apt-get` 或 在 Fedora/Redhat 上使用 `yum` 安装 node.js 
   
   或者 你可以从 node.js 的官方网站上安装 node.js 
   <http://nodejs.org/download/>
 
-+ node.js npm 模块 : xmldom
++ **node.js npm 模块 : xmldom**
   
   这个程序的运行需要一些 node.js 的第三方模块. 
   
-  你可以使用 *npm* 安装 **xmldom** 
+  你可以使用 `npm` 安装 **xmldom** 
   
-  	$ npm install xmldom
+  > $ npm install xmldom
 
-+ ffmpeg
++ **ffmpeg**
   
   这个程序使用 **ffmpeg** 来自动合并分段视频. 
   
-  你应该安装 *ffmpeg*, 否则 你将不能使用 evdh 的 自动合并分段视频 功能. 
+  你应该安装 `ffmpeg`, 否则 你将不能使用 evdh 的 自动合并分段视频 功能. 
 
 
 ## 配置
 
-默认 配置文件 是 *etc/evdh.conf.xml* 
+默认 配置文件 是 `etc/evdh.conf.xml` 
 
 请根据你自己的需求修改配置文件. 
 
@@ -71,7 +64,7 @@ token 被保存在一个单独的文件中, 而不是直接写入配置文件.
 这样做是为了帮助保护你的 token. 
 你可以在配置文件中修改存储 token 的文件位置. 
 
-默认的 token 文件位置是 *tmp/private/token* 
+默认的 token 文件位置是 `tmp/private/token` 
 在使用这个程序下载视频之前, 你应该在 token 文件中写入你自己的 token. 
 
 
@@ -79,40 +72,40 @@ token 被保存在一个单独的文件中, 而不是直接写入配置文件.
 
 你应该使用 evdh 启动 shell 脚本 来启动并运行 evdh. 你可以使用这个命令: 
 
-	$ ./evdh.sh
+> $ ./evdh.sh
 
 这会交互式运行 evdh. 
 
 你可以使用 `$ ./evdh.sh --version` 显示 evdh 的版本信息. <br />
 或者这样显示帮助信息: 
 
-	$ ./evdh.sh --help
-	
-	evdh : EisF 视频下载助手 (public zh-cn version) (中文版) 
-	      (EisF Video Download Helper)
-	用法: evdh
-	      evdh [选项] ... 
-	选项: 
-	   无           只使用 "evdh" 而不带任何命令行参数将会以 "normal" 模式 
-		        (普通模式) 启动 evdh. 该模式以交互式运行. 
-	   
-	   --url <url>  以 "auto_url" 模式 (自动 URL 模式) 启动 evdh. 
-		        在该模式中, evdh 会自动下载文件, 并且不会询问用户确认. 
-	   --continue   以 "auto_continue" 模式 (自动继续模式) 启动 evdh. 
-		        在该模式中, evdh 会自动继续未完成的任务, 不会询问用户确认. 
-	   --list-file <file>
-		        在这个 "task_list" 模式 (任务列表模式) 中你可以让 evdh 
-		        自动下载很多 URL. URL 写在 <file> 所指定的文件中, 一行一个. 
-	   
-	   --help       显示本帮助信息. 
-	   --version    显示 evdh 的版本信息. 
-	注:
-	     evdh 可以用来下载网站上的视频. 输入的 URL 是 视频播放页面 的 URL. 
-	 evdh 会自动通过 "api.flvxz.com" 解析 URL 获取 分段视频文件的下载地址. 
-	 并且自动把它们全部下载, 然后自动使用 ffmpeg 将它们合并成一个完整的
-	 视频文件. 
-	     evdh 使用 flv.cn <http://flv.cn> 提供的解析 API. 
-	
+> $ ./evdh.sh --help
+> 
+> evdh : EisF 视频下载助手 (public zh-cn version) (中文版) 
+>       (EisF Video Download Helper)
+> 用法: evdh
+>       evdh [选项] ... 
+> 选项: 
+>    无           只使用 "evdh" 而不带任何命令行参数将会以 "normal" 模式 
+>                 (普通模式) 启动 evdh. 该模式以交互式运行. 
+> 
+>    --url <url>  以 "auto_url" 模式 (自动 URL 模式) 启动 evdh. 
+>                 在该模式中, evdh 会自动下载文件, 并且不会询问用户确认. 
+>    --continue   以 "auto_continue" 模式 (自动继续模式) 启动 evdh. 
+>                 在该模式中, evdh 会自动继续未完成的任务, 不会询问用户确认. 
+>    --list-file <file>
+>                 在这个 "task_list" 模式 (任务列表模式) 中你可以让 evdh 
+>                 自动下载很多 URL. URL 写在 <file> 所指定的文件中, 一行一个. 
+> 
+>    --help       显示本帮助信息. 
+>    --version    显示 evdh 的版本信息. 
+> 注:
+>      evdh 可以用来下载网站上的视频. 输入的 URL 是 视频播放页面 的 URL. 
+>  evdh 会自动通过 "api.flvxz.com" 解析 URL 获取 分段视频文件的下载地址. 
+>  并且自动把它们全部下载, 然后自动使用 ffmpeg 将它们合并成一个完整的
+>  视频文件. 
+>      evdh 使用 flv.cn <http://flv.cn> 提供的解析 API. 
+> 
 
 ...
 
@@ -122,24 +115,24 @@ token 被保存在一个单独的文件中, 而不是直接写入配置文件.
 这是 自由软件, 在 GNU GPLv3+ 许可证之下发布. 
 请 阅读 LICENSE 文件获取更多信息. 
 
-This is FREE SOFTWARE, released under GNU GPLv3+ 
+This is FREE SOFTWARE, released under GNU GPLv3+ <br />
 please see LICENSE for more information. 
 
-    evdh : EisF Video Download Helper, auto download videos with analyse service provided by flv.cn (api.flvxz.com) 
-    Copyright (C) 2015 sceext <sceext@foxmail.com> 
-
-    This program is free software: you can redistribute it and/or modify
-    it under the terms of the GNU General Public License as published by
-    the Free Software Foundation, either version 3 of the License, or
-    (at your option) any later version.
-
-    This program is distributed in the hope that it will be useful,
-    but WITHOUT ANY WARRANTY; without even the implied warranty of
-    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-    GNU General Public License for more details.
-
-    You should have received a copy of the GNU General Public License
-    along with this program.  If not, see <http://www.gnu.org/licenses/>.
+>    evdh : EisF Video Download Helper, auto download videos with analyse service provided by flv.cn (api.flvxz.com) 
+>    Copyright (C) 2015 sceext <sceext@foxmail.com> 
+> 
+>    This program is free software: you can redistribute it and/or modify
+>    it under the terms of the GNU General Public License as published by
+>    the Free Software Foundation, either version 3 of the License, or
+>    (at your option) any later version.
+> 
+>    This program is distributed in the hope that it will be useful,
+>    but WITHOUT ANY WARRANTY; without even the implied warranty of
+>    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+>    GNU General Public License for more details.
+> 
+>    You should have received a copy of the GNU General Public License
+>    along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 ### 其它分支
 
@@ -147,19 +140,26 @@ please see LICENSE for more information.
 <https://github.com/sceext2/evdh> 
 同时 获取 evdh 的 源代码. 
 
-这是 evdh 的 *中文*版. (public zh-cn version) branch version-zh-cn <br />
+这是 evdh 的 *中文*版. `(public zh-cn version) branch version-zh-cn` <br />
 <https://github.com/sceext2/evdh/tree/version-zh-cn>
 
 #### evdh 还有这些 版本
 
-+ **English version** (public version) branch version <br />
++ **English version** `(public version) branch version` <br />
   <https://github.com/sceext2/evdh/tree/version>
 
-+ *windows* **版** (public win version) branch version-win <br />
++ *windows* **版** `(public win version) branch version-win` <br />
   <https://github.com/sceext2/evdh/tree/version-win>
 
 你也可以从以下地址 下载 evdh : <br />
 <https://github.com/sceext2/evdh/releases>
+
+#### evdh 的 uuid 标记
+
+这个 evdh 程序的 uuid 标记是 <br />
+uuid mark for this program evdh is 
+
+> uuid=1df11f80-183f-405f-b93c-4dff2ce08398 (public zh-cn version) 
 
 
 ## 版本
@@ -255,7 +255,7 @@ evdh 目前只有基本的功能, 很多地方做的很粗糙.
 
 ### English version (public version) 测试信息, 中文版 (public zh-cn version) 测试信息
 
-这个程序现在 在 ArchLinux 上测试. (2015.02) 
+这个程序现在 在 ArchLinux 上测试. *(2015.02)* 
 
 **注意**: evdh 是写来 在 **GNU/Linux** 操作系统 上运行的, 使用 node.js 运行环境. 
 
@@ -269,7 +269,7 @@ sceext 没有特别的含义, 但是 *sceext* 可以唯一表示我. (几乎没�
 **EisF** 是给我的程序加上的 专用标识. 
 
 EisF 的意思是 **E**isF **is** Eis**F**. 
-EisF 是 *分叉式* **递归**缩写. 
+EisF 是 *分叉式* **递归**缩写. <br />
 (就像 GNU = GNU's Not Unix 一样) 
 EisF = EisF is EisF ([E]isF [is] Eis[F]) 
 
