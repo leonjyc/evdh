@@ -1,4 +1,4 @@
-:: README.md for evdh (version 0.1.8.1 test201502151456 (public zh-cn version) 
+:: README.md for evdh (version 0.1.8.2 test201502151506 (public zh-cn version) 
 
 author sceext <sceext@foxmail.com> 2009EisF2015, 2015.02 <br />
 copyright 2015 sceext All rights reserved. 
@@ -108,6 +108,7 @@ token 被保存在一个单独的文件中, 而不是直接写入配置文件.
 >      evdh 使用 flv.cn <http://flv.cn> 提供的解析 API. 
 > 
 > ```
+
 ...
 
 
@@ -159,19 +160,19 @@ please see LICENSE for more information.
 
 #### evdh 的 uuid 标记
 
-这个 evdh 程序的 uuid 标记是 <br />
-uuid mark for this program evdh is 
+这个 `evdh` 程序的 `uuid` 标记是 <br />
+`uuid` mark for this program `evdh` is 
 
 > `uuid=1df11f80-183f-405f-b93c-4dff2ce08398 (public zh-cn version)` 
 
 
 ## 版本
 
-**当前版本** evdh version 0.1.6.1 test201502150137 (public zh-cn version) (中文版) 
+**当前版本** evdh version 0.1.6.1 test201502150137 `(public zh-cn version)` (中文版) 
 
 ### version 0.1.6.1 test201502150137 (public zh-cn version) (中文版)
 
-+ 对 version 0.1.5.0 (public version) 进行翻译. 
++ 对 version 0.1.5.0 `(public version)` 进行翻译. 
 
 ### version 0.1.5.0 test201502141915 (public version)
 
@@ -254,7 +255,7 @@ evdh 目前只有基本的功能, 很多地方做的很粗糙.
 
 ### English version (public version) 测试信息, 中文版 (public zh-cn version) 测试信息
 
-这个程序现在 在 ArchLinux 上测试. *(2015.02)* 
+这个程序现在 在 `ArchLinux` 上测试. *(2015.02)* 
 
 **注意**: evdh 是写来 在 **GNU/Linux** 操作系统 上运行的, 使用 node.js 运行环境. 
 
